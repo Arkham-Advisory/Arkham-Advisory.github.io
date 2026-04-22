@@ -3,3 +3,16 @@
 .dolt/
 *.db
 .beads-credential-key
+.beads/
+
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+
+# Logs
+*.log
+!.beads/dolt-server.log
+
+# Platform files
+.DS_Store

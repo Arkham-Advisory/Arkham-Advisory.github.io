@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandNote from "../components/BrandNote.astro";
+import CTASection from "../components/CTASection.astro";
+import HeroSection from "../components/HeroSection.astro";
+import QuoteBlock from "../components/QuoteBlock.astro";
+import SectionIntro from "../components/SectionIntro.astro";
+import ServiceGrid from "../components/ServiceGrid.astro";
+import WritingGrid from "../components/WritingGrid.astro";
+
+const services = await getCollection("services");
+const writing = (await getCollection("writing")).filter((entry) => entry.data.featured);
+---
+
+<BaseLayout
+  title="Arkham Advisory | Senior advisory for data, AI, and transformation"
+  description="Arkham Advisory helps leaders think clearly when platforms are shifting, AI capabilities are outrunning policy, and transformation decisions carry real operational weight."
+>
+  <HeroSection
+    title="Senior advisory for organisations making consequential decisions in data, AI, and transformation."
+    text="Arkham Advisory helps leaders think clearly when platforms are shifting, AI capabilities are outrunning policy, and transformation decisions carry real operational weight."
+    primaryLabel="Work with me"
+    primaryHref="/contact/"
+    secondaryLabel="Read the field notes"
+    secondaryHref="/writing/"
+  />
+
+  <section class="section section--services">
+    <div class="container">
+      <SectionIntro
+        eyebrow="What I advise on"
+        title="Clearer decisions where technology, delivery, and organisational reality meet."
+        text="The work is deliberately focused: a small number of high-stakes advisory contexts where independent judgment can change the quality of the decision."
+      />
+      <ServiceGrid services={services} />
+    </div>
+  </section>
+
+  <section class="section section--work">
+    <div class="container work-grid">
+      <div>
+        <p class="eyebrow">How I work</p>
+        <h2>Direct advice, not theatre.</h2>
+        <p>
+          Arkham Advisory works with a small number of engagements at a time. The
+          model is senior and direct: understand the system, name the real
+          decision, test the assumptions, and help leaders act with more confidence.
+        </p>
+        <p>
+          Architecture, delivery, data, AI, and value are treated together because
+          the hard decisions rarely respect organisational boundaries.
+        </p>
+      </div>
+      <QuoteBlock
+        quote="High-signal judgment is often less about adding a framework than removing noise from the decision."
+        cite="Arkham Advisory"
+      />
+    </div>
+  </section>
+
+  <section class="section section--writing">
+    <div class="container">
+      <div class="split-heading">
+        <SectionIntro
+          eyebrow="Selected writing"
+          title="Field notes from the same universe."
+          text="Arkham Times is where the longer-form thinking lives: data platforms, AI, transformation, and the practical behavior of complex systems."
+        />
+        <a class="button button--ghost" href="/writing/">Open the field notes</a>
+      </div>
+      <WritingGrid writing={writing} limit={3} />
+    </div>
+  </section>
+
+  <section class="section section--brand">
+    <div class="container">
+      <BrandNote>
+        <p>
+          The name comes from Lovecraft's Arkham: a place where familiar
+          explanations stop being enough, and older, more demanding realities
+          begin to show through. That felt closer to modern technology than the
+          usual language of disruption. The map runs out. Judgment matters.
+        </p>
+      </BrandNote>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CTASection
+        title="If the decisions in front of you are consequential enough to justify senior external judgment, let's talk."
+        primaryLabel="Work with me"
+        primaryHref="/contact/"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section--services :global(.service-grid) {
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.7fr);
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: center;
+  }
+
+  .work-grid h2 {
+    margin-top: 0.75rem;
+  }
+
+  .work-grid p:not(.eyebrow) {
+    max-width: var(--text-width);
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: clamp(1.05rem, 1rem + 0.32vw, 1.2rem);
+  }
+
+  .split-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  .section--brand {
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 860px) {
+    .work-grid,
+    .split-heading {
+      grid-template-columns: 1fr;
+    }
+
+    .split-heading .button {
+      justify-self: start;
+    }
+  }
+</style>

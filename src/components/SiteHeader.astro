@@ -1,0 +1,134 @@
+---
+import { siteConfig } from "../config/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="site-header__brand" href="/" aria-label="Arkham Advisory home">
+      <picture>
+        <source media="(max-width: 520px)" srcset={siteConfig.assets.logos.monogramSvg} />
+        <img
+          src={siteConfig.assets.logos.horizontalSvg}
+          alt="Arkham Advisory"
+          width="1180"
+          height="360"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      {
+        siteConfig.nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={currentPath === item.href ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a class="site-header__cta button button--ghost" href="/contact/">Work with me</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(155, 166, 149, 0.16);
+    background: rgba(15, 26, 23, 0.94);
+    backdrop-filter: blur(14px);
+  }
+
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: minmax(9rem, 15rem) 1fr auto;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: center;
+    min-height: 5.25rem;
+    padding-block: 0.75rem;
+  }
+
+  .site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    text-decoration: none;
+  }
+
+  .site-header__brand img {
+    width: min(15rem, 100%);
+    height: auto;
+  }
+
+  .site-header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    justify-content: center;
+  }
+
+  .site-header__nav a {
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .site-header__nav a:hover,
+  .site-header__nav a[aria-current="page"] {
+    color: var(--text-primary);
+  }
+
+  .site-header__cta {
+    min-height: 2.45rem;
+    padding-inline: 0.85rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .site-header__inner {
+      grid-template-columns: auto 1fr;
+      min-height: auto;
+    }
+
+    .site-header__brand img {
+      width: 3.65rem;
+    }
+
+    .site-header__nav {
+      grid-column: 1 / -1;
+      order: 3;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 0.1rem;
+      scrollbar-width: none;
+    }
+
+    .site-header__nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .site-header__cta {
+      justify-self: end;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .site-header__nav {
+      gap: 0.35rem 0.75rem;
+    }
+
+    .site-header__nav a {
+      font-size: 0.83rem;
+    }
+  }
+</style>

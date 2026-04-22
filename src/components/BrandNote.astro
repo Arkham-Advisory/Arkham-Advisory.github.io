@@ -1,0 +1,36 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Why Arkham" } = Astro.props;
+---
+
+<section class="brand-note">
+  <p class="eyebrow">{title}</p>
+  <div>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .brand-note {
+    display: grid;
+    grid-template-columns: 0.35fr 1fr;
+    gap: clamp(1rem, 5vw, 4rem);
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border-block: 1px solid var(--border-subtle);
+  }
+
+  .brand-note div {
+    max-width: var(--text-width);
+    color: var(--text-secondary);
+    font-size: clamp(1.08rem, 1rem + 0.45vw, 1.32rem);
+  }
+
+  @media (max-width: 760px) {
+    .brand-note {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

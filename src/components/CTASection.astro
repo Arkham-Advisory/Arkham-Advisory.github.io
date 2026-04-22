@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  text?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  title,
+  text,
+  primaryLabel = "Get in touch",
+  primaryHref = "/contact/",
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+---
+
+<section class="cta-section">
+  <div>
+    <p class="eyebrow">Next step</p>
+    <h2>{title}</h2>
+    {text && <p>{text}</p>}
+  </div>
+  <div class="cta-section__actions">
+    <a class="button" href={primaryHref}>{primaryLabel}</a>
+    {secondaryLabel && secondaryHref && <a class="button button--ghost" href={secondaryHref}>{secondaryLabel}</a>}
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(242, 239, 230, 0.08), rgba(70, 83, 72, 0.08));
+  }
+
+  .cta-section h2 {
+    max-width: 52rem;
+    margin-top: 0.65rem;
+  }
+
+  .cta-section p:not(.eyebrow) {
+    max-width: 44rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 840px) {
+    .cta-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+import { getCollection } from "astro:content";
+import CTASection from "../components/CTASection.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionIntro from "../components/SectionIntro.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+const toServiceSlug = (id: string) => id.replace(/\.md$/, "");
+
+const engagementFormats = [
+  {
+    title: "Advisory retainer",
+    text: "Ongoing senior counsel for leaders navigating a sequence of architectural, AI, data, or transformation decisions.",
+  },
+  {
+    title: "Focused assessment",
+    text: "A short, sharp review of a platform, programme, decision, or risk area where clarity is needed quickly.",
+  },
+  {
+    title: "Strategic review",
+    text: "A deeper independent view on technology direction, delivery confidence, organisational readiness, and value risk.",
+  },
+  {
+    title: "Workshop or deep dive",
+    text: "A structured session to align leaders, expose assumptions, and turn ambiguity into decisions and next actions.",
+  },
+];
+---
+
+<BaseLayout
+  title="Advisory | Arkham Advisory"
+  description="Senior advisory across architecture, data platforms, AI and agentic systems, technical due diligence, and transformation counsel."
+>
+  <PageHero
+    eyebrow="Advisory"
+    title="Concrete advice for consequential technical and transformation decisions."
+    text="Arkham Advisory works where architecture, delivery, data, AI, and organisational reality have to be considered together. The aim is not more process. It is clearer judgment at the moment decisions become expensive."
+  />
+
+  <section class="section section--services">
+    <div class="container advisory-list">
+      {
+        services.map((service) => (
+          <article class="advisory-service" id={toServiceSlug(service.id)}>
+            <div class="advisory-service__intro">
+              <p class="eyebrow">0{service.data.order}</p>
+              <h2>{service.data.title}</h2>
+              <p>{service.data.intro}</p>
+            </div>
+            <div class="advisory-service__detail">
+              <div>
+                <h3>Example situations</h3>
+                <ul>
+                  {service.data.useCases.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3>Likely outputs</h3>
+                <ul>
+                  {service.data.outcomes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--formats">
+    <div class="container">
+      <SectionIntro
+        eyebrow="Engagement formats"
+        title="A shape for the decision in front of you."
+        text="The format depends on the level of uncertainty, urgency, and leadership attention required. Each engagement is designed to produce useful clarity rather than generic theatre."
+      />
+      <div class="format-grid">
+        {
+          engagementFormats.map((format) => (
+            <article>
+              <h3>{format.title}</h3>
+              <p>{format.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CTASection
+        title="If you are facing a decision where the cost of being vaguely right is too high, get in touch."
+        text="A useful first conversation usually starts with the decision, the pressure around it, and what would change if the organisation had a clearer view."
+        primaryLabel="Get in touch"
+        primaryHref="/contact/"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .advisory-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .advisory-service {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(19, 29, 26, 0.78);
+  }
+
+  .advisory-service__intro {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+
+  .advisory-service__intro p:not(.eyebrow) {
+    color: var(--text-secondary);
+    font-size: clamp(1.03rem, 0.98rem + 0.25vw, 1.18rem);
+  }
+
+  .advisory-service__detail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .advisory-service h3,
+  .format-grid h3 {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--text-secondary);
+  }
+
+  li::marker {
+    color: var(--arkham-sage);
+  }
+
+  .format-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .format-grid article {
+    padding: 1.25rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .format-grid p {
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 980px) {
+    .advisory-service,
+    .advisory-service__detail,
+    .format-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

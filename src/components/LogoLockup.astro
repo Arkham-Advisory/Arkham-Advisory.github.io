@@ -1,0 +1,66 @@
+---
+import { siteConfig } from "../config/site";
+
+type Variant = "horizontal" | "stacked" | "monogram";
+
+interface Props {
+  variant?: Variant;
+  href?: string;
+  class?: string;
+}
+
+const { variant = "horizontal", href, class: className = "" } = Astro.props;
+
+const logo =
+  variant === "stacked"
+    ? siteConfig.assets.logos.primarySvg
+    : variant === "monogram"
+      ? siteConfig.assets.logos.monogramSvg
+      : siteConfig.assets.logos.horizontalSvg;
+
+const dimensions =
+  variant === "stacked"
+    ? { width: 900, height: 900 }
+    : variant === "monogram"
+      ? { width: 512, height: 512 }
+      : { width: 1180, height: 360 };
+
+const classes = `logo-lockup logo-lockup--${variant} ${className}`.trim();
+---
+
+{
+  href ? (
+    <a class={classes} href={href} aria-label="Arkham Advisory home">
+      <img src={logo} alt="Arkham Advisory" {...dimensions} decoding="async" />
+    </a>
+  ) : (
+    <div class={classes}>
+      <img src={logo} alt="Arkham Advisory" {...dimensions} decoding="async" />
+    </div>
+  )
+}
+
+<style>
+  .logo-lockup {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo-lockup img {
+    width: 100%;
+    height: auto;
+  }
+
+  .logo-lockup--horizontal {
+    width: min(18rem, 70vw);
+  }
+
+  .logo-lockup--stacked {
+    width: min(20rem, 68vw);
+  }
+
+  .logo-lockup--monogram {
+    width: 4rem;
+  }
+</style>

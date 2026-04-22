@@ -1,0 +1,29 @@
+<div class="divider-ornament" aria-hidden="true">
+  <span></span>
+</div>
+
+<style>
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-block: var(--space-7);
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    flex: 1;
+    height: 1px;
+    content: "";
+    background: var(--border-subtle);
+  }
+
+  .divider-ornament span {
+    width: 0.55rem;
+    aspect-ratio: 1;
+    margin-inline: 1rem;
+    border: 1px solid var(--arkham-sage);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+</style>

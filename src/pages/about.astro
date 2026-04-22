@@ -1,0 +1,160 @@
+---
+import BrandNote from "../components/BrandNote.astro";
+import CTASection from "../components/CTASection.astro";
+import MonogramBadge from "../components/MonogramBadge.astro";
+import PageHero from "../components/PageHero.astro";
+import QuoteBlock from "../components/QuoteBlock.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const principles = [
+  "Direct, analytical advice that respects the complexity of the organisation.",
+  "Calm work under ambiguity, without pretending uncertainty can be wished away.",
+  "Practical architecture and delivery judgment, not abstract purity.",
+  "A value-aware view of technology: what it enables, costs, constrains, and makes possible.",
+];
+---
+
+<BaseLayout
+  title="About | Arkham Advisory"
+  description="About Arkham Advisory: senior judgment across architecture, engineering, data platforms, transformation, and AI."
+>
+  <PageHero
+    eyebrow="About"
+    title="A practice built for the places where architecture, delivery, and value become one problem."
+    text="Arkham Advisory exists for leaders who need clear external judgment on consequential technical decisions, especially when the easy narratives have stopped being useful."
+  />
+
+  <section class="section">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">Profile</p>
+        <h2>Senior technical judgment, grounded in how organisations actually work.</h2>
+        <p>
+          Arkham Advisory is led by Niels Freier, working across architecture,
+          engineering judgment, data platforms, transformation, and emerging AI
+          systems. The work focuses on the decisions that sit between strategy
+          and execution: platform direction, delivery confidence, technical value,
+          and the operating consequences of new capabilities.
+        </p>
+        <p>
+          The practice is intentionally small and direct. It is designed for
+          moments when leaders need a clear read on a complex system, not another
+          layer of generic consultancy material.
+        </p>
+      </div>
+      <div class="about-mark">
+        <MonogramBadge />
+        <QuoteBlock
+          quote="Many organisations do not primarily lack technology. They lack clarity at the boundary between architecture, delivery, and value."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--style">
+    <div class="container">
+      <div class="style-grid">
+        <div>
+          <p class="eyebrow">Working style</p>
+          <h2>Practical, calm, and precise.</h2>
+        </div>
+        <div class="principles">
+          {principles.map((principle) => <p>{principle}</p>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--brand">
+    <div class="container">
+      <BrandNote>
+        <p>
+          Arkham is a metaphor for the point where familiar explanations stop
+          being enough. In modern technology, that point arrives when platforms,
+          data, AI, delivery, and organisational incentives begin to interact in
+          ways no single dashboard can explain.
+        </p>
+      </BrandNote>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CTASection
+        title="If you need a clearer view of a consequential technical decision, let's talk."
+        primaryLabel="Get in touch"
+        primaryHref="/contact/"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 0.62fr);
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: start;
+  }
+
+  .about-copy {
+    max-width: var(--text-width);
+  }
+
+  .about-copy h2 {
+    margin-top: 0.75rem;
+  }
+
+  .about-copy p:not(.eyebrow) {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: clamp(1.05rem, 1rem + 0.28vw, 1.2rem);
+  }
+
+  .about-mark {
+    display: grid;
+    gap: 2rem;
+    justify-items: start;
+  }
+
+  .section--style {
+    background: rgba(19, 29, 26, 0.42);
+    border-block: 1px solid var(--border-subtle);
+  }
+
+  .style-grid {
+    display: grid;
+    grid-template-columns: 0.55fr 1fr;
+    gap: clamp(2rem, 7vw, 5rem);
+  }
+
+  .style-grid h2 {
+    margin-top: 0.75rem;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .principles p {
+    padding: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(15, 26, 23, 0.72);
+    color: var(--text-secondary);
+  }
+
+  .section--brand {
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 900px) {
+    .about-grid,
+    .style-grid,
+    .principles {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

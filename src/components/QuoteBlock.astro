@@ -1,0 +1,35 @@
+---
+interface Props {
+  quote: string;
+  cite?: string;
+}
+
+const { quote, cite } = Astro.props;
+---
+
+<figure class="quote-block">
+  <blockquote>{quote}</blockquote>
+  {cite && <figcaption>{cite}</figcaption>}
+</figure>
+
+<style>
+  .quote-block {
+    margin: 0;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    border-left: 1px solid var(--arkham-sage);
+    background: rgba(155, 166, 149, 0.06);
+  }
+
+  .quote-block blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.12rem + 1vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .quote-block figcaption {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>

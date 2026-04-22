@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import WritingCard from "./WritingCard.astro";
+
+interface Props {
+  writing: CollectionEntry<"writing">[];
+  limit?: number;
+}
+
+const { writing, limit } = Astro.props;
+const articles = [...writing]
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, limit ?? writing.length);
+---
+
+<div class="writing-grid">
+  {
+    articles.map((article) => (
+      <WritingCard
+        title={article.data.title}
+        description={article.data.description}
+        category={article.data.category}
+        publishedAt={article.data.publishedAt}
+        readTime={article.data.readTime}
+        externalUrl={article.data.externalUrl}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .writing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 920px) {
+    .writing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

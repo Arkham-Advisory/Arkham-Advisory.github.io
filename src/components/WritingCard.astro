@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  publishedAt: Date;
+  externalUrl: string;
+  readTime?: string;
+}
+
+const { title, description, category, publishedAt, externalUrl, readTime } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+}).format(publishedAt);
+---
+
+<article class="writing-card">
+  <div class="writing-card__meta">
+    <span>{category}</span>
+    <span>{formattedDate}</span>
+    {readTime && <span>{readTime}</span>}
+  </div>
+  <h3><a href={externalUrl} rel="noreferrer">{title}</a></h3>
+  <p>{description}</p>
+</article>
+
+<style>
+  .writing-card {
+    display: grid;
+    gap: 1rem;
+    min-height: 100%;
+    padding: clamp(1.25rem, 3vw, 1.7rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(15, 26, 23, 0.72);
+  }
+
+  .writing-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.75rem;
+    color: var(--arkham-sage);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .writing-card h3 a {
+    text-decoration: none;
+  }
+
+  .writing-card p {
+    color: var(--text-secondary);
+  }
+</style>

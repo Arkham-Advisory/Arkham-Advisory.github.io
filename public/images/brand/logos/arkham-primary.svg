@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title">
+  <title id="title">Arkham Advisory</title>
+  <defs>
+    <style>
+      .ivory { fill: #f2efe6; }
+      .sage-stroke { fill: none; stroke: #9ba695; stroke-linecap: round; stroke-linejoin: round; }
+      .moss { fill: #465348; }
+      .brand { font-family: Cinzel, Georgia, serif; letter-spacing: 22px; }
+      .sub { font-family: Inter, Arial, sans-serif; letter-spacing: 14px; }
+    </style>
+  </defs>
+  <g transform="translate(194 88)">
+    <circle class="sage-stroke" cx="256" cy="256" r="202" stroke-width="3" opacity="0.36"/>
+    <circle class="sage-stroke" cx="256" cy="256" r="154" stroke-width="1.5" opacity="0.24"/>
+    <path class="sage-stroke" d="M256 52v74M256 386v74M52 256h74M386 256h74" stroke-width="2" opacity="0.28"/>
+    <path class="sage-stroke" d="M117 117l52 52M343 343l52 52M395 117l-52 52M169 343l-52 52" stroke-width="1.5" opacity="0.22"/>
+    <text x="256" y="337" text-anchor="middle" class="ivory" font-family="Cinzel, Georgia, serif" font-size="255" font-weight="600">A</text>
+    <path class="sage-stroke" d="M158 326c62 18 125-4 168-44 34-31 53-68 43-93-6-16-23-19-39-11-29 15-47 56-40 94 8 45 49 80 100 84" stroke-width="18" opacity="0.88"/>
+    <circle class="moss" cx="305" cy="284" r="6" opacity="0.78"/>
+    <circle class="moss" cx="326" cy="255" r="5" opacity="0.72"/>
+    <circle class="moss" cx="344" cy="224" r="4" opacity="0.64"/>
+    <circle class="moss" cx="358" cy="196" r="3.4" opacity="0.58"/>
+  </g>
+  <text x="450" y="662" text-anchor="middle" class="ivory brand" font-size="76" font-weight="500">ARKHAM</text>
+  <text x="450" y="724" text-anchor="middle" class="ivory sub" font-size="25" font-weight="600" opacity="0.82">ADVISORY</text>
+  <path class="sage-stroke" d="M265 764h370" stroke-width="1.5" opacity="0.26"/>
+</svg>

@@ -1,0 +1,104 @@
+---
+import ContactMethods from "../components/ContactMethods.astro";
+import MonogramBadge from "../components/MonogramBadge.astro";
+import PageHero from "../components/PageHero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const fitItems = [
+  "Architecture or platform direction decisions",
+  "AI and agentic system choices with operational consequences",
+  "Major transformation steering or delivery confidence questions",
+  "Technical due diligence, independent review, or value assurance",
+];
+---
+
+<BaseLayout
+  title="Contact | Arkham Advisory"
+  description="Get in touch with Arkham Advisory about architecture, data platform, AI, due diligence, or transformation decisions."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="For serious enquiries where judgment matters."
+    text="A good first note describes the decision in front of you, why it matters now, and what kind of clarity would change the next move."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-panel">
+        <p class="eyebrow">Start here</p>
+        <h2>Email is the front door.</h2>
+        <p>
+          Arkham Advisory works with a limited number of engagements at a time.
+          If there is a fit, the next step is usually a focused conversation
+          about the decision, constraints, and useful scope.
+        </p>
+        <ContactMethods showArkhamTimes={true} />
+      </div>
+
+      <aside class="fit-panel" aria-labelledby="fit-title">
+        <MonogramBadge />
+        <div>
+          <p class="eyebrow">Good fit</p>
+          <h2 id="fit-title">The work tends to start here.</h2>
+          <ul>
+            {fitItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(18rem, 0.75fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .contact-panel,
+  .fit-panel {
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(19, 29, 26, 0.78);
+  }
+
+  .contact-panel {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .contact-panel h2,
+  .fit-panel h2 {
+    margin-top: 0.3rem;
+  }
+
+  .contact-panel > p:not(.eyebrow) {
+    color: var(--text-secondary);
+  }
+
+  .fit-panel {
+    display: grid;
+    gap: 2rem;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.25rem 0 0;
+    padding-left: 1.15rem;
+    color: var(--text-secondary);
+  }
+
+  li::marker {
+    color: var(--arkham-sage);
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

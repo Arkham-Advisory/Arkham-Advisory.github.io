@@ -1,0 +1,139 @@
+---
+import { getCollection } from "astro:content";
+import CTASection from "../components/CTASection.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionIntro from "../components/SectionIntro.astro";
+import WritingGrid from "../components/WritingGrid.astro";
+import { siteConfig } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const writing = await getCollection("writing");
+
+const topics = [
+  {
+    title: "Data Platform",
+    text: "How data infrastructure becomes an operating environment for decisions, products, and organisational behavior.",
+  },
+  {
+    title: "AI",
+    text: "What AI and agentic systems amplify, what they expose, and what has to become clearer before speed can be trusted.",
+  },
+  {
+    title: "Transformation",
+    text: "The gap between delivery motion and value, especially when strategy meets legacy systems and real incentives.",
+  },
+  {
+    title: "Engineering / Architecture",
+    text: "Boundaries, ownership, documentation, and the practical conditions that make complex systems legible.",
+  },
+];
+---
+
+<BaseLayout
+  title="Writing | Arkham Advisory"
+  description="Selected field notes from Arkham Times on data platforms, AI, transformation, engineering, and architecture."
+>
+  <PageHero
+    eyebrow="Writing"
+    title="Field notes on how systems actually behave."
+    text="Arkham Times is the editorial companion to Arkham Advisory: longer-form thinking on architecture, data, AI, transformation, and the organisations navigating all three."
+  />
+
+  <section class="section section--topics">
+    <div class="container">
+      <SectionIntro
+        eyebrow="Topics"
+        title="The recurring questions."
+        text="The writing follows the same terrain as the advisory work: where technical choices, organisational behavior, and strategic consequences meet."
+      />
+      <div class="topic-grid">
+        {
+          topics.map((topic) => (
+            <article>
+              <h3>{topic.title}</h3>
+              <p>{topic.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--featured">
+    <div class="container">
+      <div class="split-heading">
+        <SectionIntro
+          eyebrow="Featured articles"
+          title="Latest from Arkham Times."
+          text="A launch curation of the three latest field notes, updated through the local content collection."
+        />
+        <a class="button button--ghost" href={siteConfig.arkhamTimesUrl} rel="noreferrer">
+          Open Arkham Times
+        </a>
+      </div>
+      <WritingGrid writing={writing} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CTASection
+        title="Read the wider archive, or start with the advisory conversation."
+        text="The writing is public fieldwork. The advisory practice is where that judgment is applied to specific decisions."
+        primaryLabel="Open the archive"
+        primaryHref={siteConfig.arkhamTimesUrl}
+        secondaryLabel="Get in touch"
+        secondaryHref="/contact/"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .topic-grid article {
+    padding: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(19, 29, 26, 0.7);
+  }
+
+  .topic-grid h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .topic-grid p {
+    color: var(--text-secondary);
+  }
+
+  .split-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 980px) {
+    .topic-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .topic-grid,
+    .split-heading {
+      grid-template-columns: 1fr;
+    }
+
+    .split-heading .button {
+      justify-self: start;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  showArkhamTimes?: boolean;
+}
+
+const { showArkhamTimes = false } = Astro.props;
+---
+
+<div class="contact-methods">
+  <a href={`mailto:${siteConfig.email}`}>
+    <span>Email</span>
+    {siteConfig.email}
+  </a>
+  {
+    showArkhamTimes && (
+      <a href={siteConfig.arkhamTimesUrl} rel="noreferrer">
+        <span>Writing</span>
+        Arkham Times
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .contact-methods {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact-methods a {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: rgba(19, 29, 26, 0.74);
+    text-decoration: none;
+  }
+
+  .contact-methods span {
+    color: var(--arkham-sage);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>

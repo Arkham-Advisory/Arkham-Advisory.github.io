@@ -1,0 +1,38 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label = "Arkham Advisory", class: className = "" } = Astro.props;
+---
+
+<div class={`monogram-badge ${className}`.trim()} aria-label={label}>
+  <img
+    src={siteConfig.assets.logos.monogramSvg}
+    alt=""
+    width="512"
+    height="512"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .monogram-badge {
+    display: inline-grid;
+    width: clamp(4rem, 11vw, 7rem);
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    background: rgba(15, 26, 23, 0.72);
+  }
+
+  .monogram-badge img {
+    width: 72%;
+    height: auto;
+  }
+</style>

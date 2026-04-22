@@ -27,8 +27,8 @@ The site has no CMS dependency. Edit Markdown content, run `bun run build`, and 
 GitHub Pages deployment is configured in `.github/workflows/deploy.yml`.
 
 - The workflow runs on pushes to `main`.
-- The build artifact is `dist/`.
+- The workflow builds `dist/` and publishes it to the `gh-pages` branch.
 - `public/CNAME` sets the custom domain to `arkham-advisory.com`.
 - Astro canonical metadata is configured for `https://arkham-advisory.com`.
 
-Before launch, enable GitHub Pages for this repository using GitHub Actions as the source, and make sure DNS for `arkham-advisory.com` points to GitHub Pages.
+Before launch, enable GitHub Pages for this repository using the `gh-pages` branch as the source, and make sure DNS for `arkham-advisory.com` points to GitHub Pages.

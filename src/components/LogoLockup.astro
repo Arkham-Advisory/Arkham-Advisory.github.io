@@ -13,17 +13,17 @@ const { variant = "horizontal", href, class: className = "" } = Astro.props;
 
 const logo =
   variant === "stacked"
-    ? siteConfig.assets.logos.primarySvg
+    ? siteConfig.assets.logos.primaryDark
     : variant === "monogram"
-      ? siteConfig.assets.logos.monogramSvg
-      : siteConfig.assets.logos.horizontalSvg;
+      ? siteConfig.assets.logos.monogramDark
+      : siteConfig.assets.logos.horizontalDark;
 
 const dimensions =
   variant === "stacked"
-    ? { width: 900, height: 900 }
+    ? { width: 1254, height: 1254 }
     : variant === "monogram"
-      ? { width: 512, height: 512 }
-      : { width: 1180, height: 360 };
+      ? { width: 1254, height: 1254 }
+      : { width: 2172, height: 724 };
 
 const classes = `logo-lockup logo-lockup--${variant} ${className}`.trim();
 ---

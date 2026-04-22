@@ -15,7 +15,7 @@ const { showArkhamTimes = false } = Astro.props;
   </a>
   {
     showArkhamTimes && (
-      <a href={siteConfig.arkhamTimesUrl} rel="noreferrer">
+      <a href={siteConfig.arkhamTimesUrl} rel="noreferrer noopener" target="_blank">
         <span>Writing</span>
         Arkham Times
       </a>
@@ -35,7 +35,7 @@ const { showArkhamTimes = false } = Astro.props;
     padding: 1.25rem;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    background: rgba(19, 29, 26, 0.74);
+    background: rgba(13, 26, 28, 0.78);
     text-decoration: none;
   }
 

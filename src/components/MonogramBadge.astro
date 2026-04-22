@@ -11,10 +11,10 @@ const { label = "Arkham Advisory", class: className = "" } = Astro.props;
 
 <div class={`monogram-badge ${className}`.trim()} aria-label={label}>
   <img
-    src={siteConfig.assets.logos.monogramSvg}
+    src={siteConfig.assets.logos.monogramDark}
     alt=""
-    width="512"
-    height="512"
+    width="1254"
+    height="1254"
     loading="lazy"
     decoding="async"
   />
@@ -28,7 +28,7 @@ const { label = "Arkham Advisory", class: className = "" } = Astro.props;
     place-items: center;
     border: 1px solid var(--border-subtle);
     border-radius: 50%;
-    background: rgba(15, 26, 23, 0.72);
+    background: var(--bg-body);
   }
 
   .monogram-badge img {

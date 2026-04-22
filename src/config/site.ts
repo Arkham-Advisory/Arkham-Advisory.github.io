@@ -7,6 +7,7 @@ export const siteConfig = {
     "Senior advisory for organisations making consequential decisions in data, AI, and transformation.",
   email: "hello@arkham-advisory.com",
   arkhamTimesUrl: "https://arkham-times.com",
+  linkedInUrl: "https://www.linkedin.com/company/arkham-advisory",
   nav: [
     { label: "Home", href: "/" },
     { label: "Advisory", href: "/advisory/" },

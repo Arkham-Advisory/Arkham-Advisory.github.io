@@ -22,7 +22,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
     <span>{formattedDate}</span>
     {readTime && <span>{readTime}</span>}
   </div>
-  <h3><a href={externalUrl} rel="noreferrer">{title}</a></h3>
+  <h3><a href={externalUrl} rel="noreferrer noopener" target="_blank">{title}</a></h3>
   <p>{description}</p>
 </article>
 
@@ -34,7 +34,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
     padding: clamp(1.25rem, 3vw, 1.7rem);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    background: rgba(15, 26, 23, 0.72);
+    background: rgba(13, 26, 28, 0.78);
   }
 
   .writing-card__meta {

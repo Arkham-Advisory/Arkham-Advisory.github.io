@@ -16,6 +16,9 @@ const {
   secondaryLabel,
   secondaryHref,
 } = Astro.props;
+
+const isExternal = (href: string) => href.startsWith("http");
+const externalAttrs = { rel: "noreferrer noopener", target: "_blank" };
 ---
 
 <section class="cta-section">
@@ -25,8 +28,8 @@ const {
     {text && <p>{text}</p>}
   </div>
   <div class="cta-section__actions">
-    <a class="button" href={primaryHref}>{primaryLabel}</a>
-    {secondaryLabel && secondaryHref && <a class="button button--ghost" href={secondaryHref}>{secondaryLabel}</a>}
+    <a class="button" href={primaryHref} {...(isExternal(primaryHref) ? externalAttrs : {})}>{primaryLabel}</a>
+    {secondaryLabel && secondaryHref && <a class="button button--ghost" href={secondaryHref} {...(isExternal(secondaryHref) ? externalAttrs : {})}>{secondaryLabel}</a>}
   </div>
 </section>
 

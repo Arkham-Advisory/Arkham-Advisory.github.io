@@ -1,7 +1,7 @@
 ---
 title: "AI strategy and agentic systems"
 summary: "Counsel on where AI and agentic systems create leverage, where they amplify existing risk, and what needs to be true before adoption can be trusted."
-intro: "For leaders moving beyond demos into operating environments where AI touches delivery, decision-making, documentation, or system behavior."
+intro: "For leaders moving past demos into situations where AI is actually touching delivery, decisions, documentation, or how systems behave."
 useCases:
   - "AI pilots are multiplying faster than policy, architecture, and delivery controls can absorb."
   - "Agentic workflows are promising, but the organisation is unsure which boundaries, records, and approvals matter."

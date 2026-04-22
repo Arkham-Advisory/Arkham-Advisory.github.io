@@ -3,13 +3,24 @@ import { siteConfig } from "../config/site";
 ---
 
 <footer class="site-footer">
+  <img
+    class="site-footer__watermark"
+    src={siteConfig.assets.logos.monogramDark}
+    alt=""
+    aria-hidden="true"
+    width="1254"
+    height="1254"
+    loading="lazy"
+    decoding="async"
+  />
+
   <div class="site-footer__inner container">
     <div class="site-footer__brand">
       <img
-        src={siteConfig.assets.logos.primarySvg}
+        src={siteConfig.assets.logos.horizontalDark}
         alt="Arkham Advisory"
-        width="900"
-        height="900"
+        width="2172"
+        height="724"
         loading="lazy"
         decoding="async"
       />
@@ -26,17 +37,38 @@ import { siteConfig } from "../config/site";
 
     <div class="site-footer__links">
       <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-      <a href={siteConfig.arkhamTimesUrl} rel="noreferrer">Arkham Times</a>
+      <a href={siteConfig.arkhamTimesUrl} rel="noreferrer noopener" target="_blank">Arkham Times</a>
+      <a href={siteConfig.linkedInUrl} rel="noreferrer noopener" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} Arkham Advisory. All rights reserved.</p>
+      <p class="site-footer__tagline">Senior advisory for data, AI, and transformation.</p>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
+    position: relative;
+    overflow: hidden;
     border-top: 1px solid var(--border-subtle);
     background:
       radial-gradient(circle at 88% 18%, rgba(155, 166, 149, 0.09), transparent 23rem),
-      #0c1512;
+      var(--bg-body);
+  }
+
+  .site-footer__watermark {
+    position: absolute;
+    right: -6rem;
+    bottom: -5rem;
+    width: 28rem;
+    height: auto;
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
   }
 
   .site-footer__inner {
@@ -52,9 +84,9 @@ import { siteConfig } from "../config/site";
   }
 
   .site-footer__brand img {
-    width: min(14rem, 62vw);
+    width: min(16rem, 72vw);
     height: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .site-footer__brand p {
@@ -76,9 +108,36 @@ import { siteConfig } from "../config/site";
     color: var(--text-primary);
   }
 
+  .site-footer__bottom {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .site-footer__bottom .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+  }
+
+  .site-footer__bottom p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .site-footer__tagline {
+    opacity: 0.65;
+  }
+
   @media (max-width: 820px) {
     .site-footer__inner {
       grid-template-columns: 1fr;
+    }
+
+    .site-footer__bottom .container {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>

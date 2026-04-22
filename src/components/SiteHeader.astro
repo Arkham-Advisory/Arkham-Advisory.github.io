@@ -8,12 +8,12 @@ const currentPath = Astro.url.pathname;
   <div class="site-header__inner container">
     <a class="site-header__brand" href="/" aria-label="Arkham Advisory home">
       <picture>
-        <source media="(max-width: 520px)" srcset={siteConfig.assets.logos.monogramSvg} />
+        <source media="(max-width: 520px)" srcset={siteConfig.assets.logos.monogramDark} />
         <img
-          src={siteConfig.assets.logos.horizontalSvg}
+          src={siteConfig.assets.logos.horizontalDark}
           alt="Arkham Advisory"
-          width="1180"
-          height="360"
+          width="2172"
+          height="724"
           decoding="async"
           fetchpriority="high"
         />
@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname;
     top: 0;
     z-index: 20;
     border-bottom: 1px solid rgba(155, 166, 149, 0.16);
-    background: rgba(15, 26, 23, 0.94);
+    background: rgba(7, 18, 20, 0.97);
     backdrop-filter: blur(14px);
   }
 
@@ -78,9 +78,11 @@ const currentPath = Astro.url.pathname;
   .site-header__nav a {
     border-radius: var(--radius-sm);
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 650;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.055em;
     text-decoration: none;
+    text-transform: uppercase;
   }
 
   .site-header__nav a:hover,

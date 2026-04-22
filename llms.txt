@@ -1,0 +1,24 @@
+# Arkham Advisory
+
+> Senior advisory for organisations making consequential decisions in data, AI, and transformation.
+
+Arkham Advisory provides senior advisory on data, AI, and organisational transformation. Engagements are independent, commercially neutral, and focused on consequential decisions.
+
+## Advisory Services
+
+- [Architecture and platform strategy](https://arkham-advisory.com/advisory/): Independent advice on platform direction, technical boundaries, and the architecture decisions that shape long-term delivery.
+- [AI strategy and agentic systems](https://arkham-advisory.com/advisory/): Counsel on where AI and agentic systems create leverage, where they amplify existing risk, and what needs to be true before adoption can be trusted.
+- [Technical due diligence](https://arkham-advisory.com/advisory/): Senior review of technology, delivery, architecture, and value risk before consequential commitments are made.
+- [Transformation counsel](https://arkham-advisory.com/advisory/): Practical advisory support for transformation leaders navigating delivery confidence, system constraints, and the gap between stated strategy and operational reality.
+
+## Writing
+
+- [Batch, Streaming, and the Boundary That Actually Matters](https://arkham-times.com/journal/batch-streaming-and-the-boundary-that-actually-matters/): The real architectural decision is not how fast you process data. It is what you choose to treat as a fact, and whether the machines around it can reason about those facts without asking permission.
+- [The modern data platform is becoming an operating system](https://arkham-times.com/journal/the-modern-data-platform-is-becoming-an-operating-system/): Why the data platform is no longer just infrastructure, and why its boundaries increasingly shape how organisations think, decide, and operate.
+- [AI development & Engineering clarity](https://arkham-times.com/journal/ai-development-engineering-clarity/): AI does not reward motion. It rewards coherence. A field note on why faster execution makes clarity, documentation, and architecture more strategic.
+
+## Contact
+
+- Email: hello@arkham-advisory.com
+- LinkedIn: https://www.linkedin.com/company/arkham-advisory
+- Website: https://arkham-advisory.com
